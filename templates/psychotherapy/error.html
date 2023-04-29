@@ -1,0 +1,30 @@
+{% extends 'psychotherapy/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+    اخطار
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card card-default shadow" style="text-align: center;border-radius: 16px;border: none;">
+                <div class="card-body" style="text-align: right;">
+                    <div class="alert alert-danger alert-dismissible text-center">
+                        متاسفانه اطلاعات وارد شده توسط شما نامعتبر میباشد</br>
+                        لطفا در صورتی که از صحت اطلاعات خود اطمینان دارید با پشتیبانی وبسایت تماس بگیرید</br>
+                        و یا اینکه مجددا فرم را تکمیل نمایید
+                    </div>
+{#                    <a href="{% url 'wizard:wizard_home_url' %}" type="button" class="btn btn-block btn-default btn-sm">بازگشت به صفحه اصلی</a>#}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+{% endblock %}

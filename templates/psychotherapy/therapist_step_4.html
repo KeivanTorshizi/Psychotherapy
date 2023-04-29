@@ -1,0 +1,122 @@
+{% extends 'psychotherapy/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+
+    <form action="" id="formStep8" method="post" name="myForm" novalidate>
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-default shadow" style="text-align: center;border-radius: 16px;border: none;">
+                        <div class="card-body" style="text-align: right;direction: ltr !important;">
+                            <div data-v-3c50d80d="" class="indicator">
+                                <div data-v-154ea6ea="" data-v-3c50d80d="">
+                                    <div data-v-154ea6ea="" class="indicatorInner">
+                                        <div data-v-154ea6ea="" class="activeArea" style="width: 70%;"></div>
+                                    </div>
+                                    <div data-v-154ea6ea="" class="indicatorLabels d-flex justify-space-between">
+                                        <div class="col-md-4 col-sm-4 activeLabel" style="text-align: left">Profile
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">Select therapist</div>
+                                        <div class="col-md-4 col-sm-4 ">Register</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-warning alert-dismissible" style="font-size: 13px;">
+                                        <h6><i class="icon fas fa-exclamation-triangle"></i> هشدار ! </h6>
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {{ wizard.management_form }}
+                            {% if wizard.form.forms %}
+                                {{ wizard.form.management_form }}
+                                {% for form in wizard.form.forms %}
+                                    {{ form }}
+                                {% endfor %}
+                            {% else %}
+
+                                <div class="row" style="text-align: center;padding-top: 20px">
+                                    <div class="form-group col-md-12 col-sm-12"
+                                         style="text-align: center;font-weight:bold;direction: ltr !important;">
+                                        How do you Evaluate your sleep Quality?
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-right: 50px">
+                                    <div class="col-lg-1 col-md-1 col-sm-12 ">
+                                    </div>
+
+                                    <div class="form-group col-md-3 col-sm-3">
+                                        <div class="selected-box" style="text-align: center">
+                                            <div>{{ wizard.form.q_t_sleep_no_impairment|as_crispy_field }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-3">
+                                        <div class="selected-box" style="text-align: center">
+                                            <div>{{ wizard.form.q_t_sleep_trouble_falling|as_crispy_field }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-3">
+                                        <div class="selected-box" style="text-align: center">
+                                            {{ wizard.form.q_t_sleep_multiple_waking|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-1 col-md-1 col-sm-12 ">
+                                    </div>
+                                </div>
+                                <div class="row" style="text-align: center;padding-right: 50px">
+                                    <div class="form-group col-md-4 col-sm-4">
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-3" style="text-align: center">
+                                        <div class="selected-box" style="text-align: center">
+                                            {{ wizard.form.q_t_sleep_trouble_waking_up|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 col-sm-4">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 container justify-content-center"
+                                     style="padding: 40px;text-align: center">
+                                    <div class="col">
+                                        <input class="btn btn-sm btn-danger next_btn"
+                                               style="background-color: rgb(247, 67, 67);
+                                                      font-size: 13px;
+                                                      color:  white;
+                                                      border-width: 10px;
+                                                      border-color: rgb(247, 82, 82);
+                                                      border-style: solid;
+                                                      border-radius: 10px;"
+                                               type="submit" value="Submt"/>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(".chb").change(function () {
+            $(".chb").prop('checked', false);
+            $(this).prop('checked', true);
+        });
+    </script>
+{% endblock %}
+

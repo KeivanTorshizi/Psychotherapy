@@ -1,0 +1,100 @@
+{% extends 'psychotherapy/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+    <style>
+        .form-control {
+            height: 30px;
+            font-size: 14px;
+            color: #999999;
+            border-radius: 30px;
+            followingToolbar: false
+
+        }
+    </style>
+    <form action="" id="formStep11" method="post" name="myForm" novalidate>
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-default shadow" style="text-align: center;border-radius: 16px;border: none;">
+                        <div class="card-body" style="text-align: left;">
+                            <div data-v-3c50d80d="" class="indicator">
+                                <div data-v-154ea6ea="" data-v-3c50d80d="">
+                                    <div data-v-154ea6ea="" class="indicatorInner">
+                                        <div data-v-154ea6ea="" class="activeArea" style="width: 70%;"></div>
+                                    </div>
+                                    <div data-v-154ea6ea="" class="indicatorLabels d-flex justify-space-between">
+                                        <div class="col-md-4 col-sm-4 activeLabel" style="text-align: left">Profile
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">Select therapist</div>
+                                        <div class="col-md-4 col-sm-4 ">Register</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-warning alert-dismissible" style="font-size: 13px;">
+                                        <h6><i class="icon fas fa-exclamation-triangle"></i> هشدار ! </h6>
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {{ wizard.management_form }}
+                            {% if wizard.form.forms %}
+                                {{ wizard.form.management_form }}
+                                {% for form in wizard.form.forms %}
+                                    {{ form }}
+                                {% endfor %}
+                            {% else %}
+                                <div class="row" style="text-align: center">
+                                    <div class="form-group col-md-12 col-sm-12"
+                                         style="text-align: center;font-weight:bold">
+                                        Specify the topic of your consultation
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-12 col-sm-12">
+                                        {{ wizard.form.q_t_initial_opinion|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 container justify-content-center"
+                                     style="padding: 40px;text-align: center">
+                                    <div class="col">
+                                        <input class="btn btn-sm btn-danger next_btn"
+                                               style="background-color: rgb(247, 67, 67);
+                                  font-size: 13px;
+                                  color:  white;
+                                  border-width: 10px;
+                                  border-color: rgb(247, 82, 82);
+                                  border-style: solid;
+                                  border-radius: 10px;"
+                                               type="submit" value="First Step"/>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+    </script>
+{% endblock %}
+

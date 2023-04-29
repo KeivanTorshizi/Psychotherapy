@@ -1,0 +1,153 @@
+{% extends 'psychotherapy/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+
+
+
+
+    <form action="" id="formStep1" method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        <div class="container-fluid">
+
+
+            <div class="row">
+                {#                <div class="col-md-1"></div>#}
+                <div class="col-md-12">
+                    <div class="card card-default shadow"
+                         style="text-align: center;border-radius: 16px;border: none;">
+                        <div class="card-body">
+
+                            <div data-v-3c50d80d="" class="indicator">
+                                <div data-v-154ea6ea="" data-v-3c50d80d="">
+                                    <div data-v-154ea6ea="" class="indicatorInner">
+                                        <div data-v-154ea6ea="" class="activeArea" style="width: 33.3%;"></div>
+                                    </div>
+                                    <div data-v-154ea6ea="" class="indicatorLabels d-flex justify-space-between">
+                                        <div class="col-md-4 col-sm-4 activeLabel" style="text-align: left">Profile
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">Select therapist</div>
+                                        <div class="col-md-4 col-sm-4 ">Register</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-warning alert-dismissible" style="font-size: 13px;">
+                                        <h6><i class="icon fas fa-exclamation-triangle"></i> هشدار ! </h6>
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {{ wizard.management_form }}
+                            {% if wizard.form.forms %}
+                                {{ wizard.form.management_form }}
+                                {% for form in wizard.form.forms %}
+                                    {{ form }}
+                                {% endfor %}
+                            {% else %}
+
+                                <div class="row" style="text-align: center;padding-top: 50px">
+                                    <div class="form-group col-md-12 col-sm-12"
+                                         style="text-align: center;font-weight:bold">
+                                        Choose the counseling topic
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top: 10px">
+                                    <div class="form-group col-md-3 col-sm-3">
+                                    </div>
+                                    <div class="form-group col-md-2 col-sm-2">
+                                        <div class="selected-box" style="text-align: center">
+                                            {{ wizard.form.p_counseling_Individual|as_crispy_field }}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-2 col-sm-2">
+                                        <div class="selected-box" style="text-align: center">
+                                            {{ wizard.form.p_counseling_couples_therapy|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2 col-sm-2">
+                                        <div class="selected-box" style="text-align: center">
+                                            {{ wizard.form.p_counseling_child_and_teen|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3 col-sm-3">
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top:45px;">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 ">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12 " style="text-align: center">
+                                        {#                <div class="col">#}
+                                        {#                <a href="{% url 'wizard:wizard_home_url' %}" class="btn btn-sm btn-secondary prev_btn" type="button"#}
+                                        {#                   value="{{ wizard.steps.fisrt }}">تغییر فرم</a>#}
+                                        <input class="btn btn-sm  next_btn center kt-padding-t-20-desktop"
+                                               id="submit_btn"
+                                               name="wizard_goto_step" type="submit"
+                                               style="background-color: rgb(247, 67, 67);
+                                                      font-size: 13px;
+                                                      color:  white;
+                                                      border-width: 10px;
+                                                      border-color: rgb(247, 82, 82);
+                                                      border-style: solid;
+                                                      border-radius: 10px;"
+                                               value="Next"/>
+
+
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {#                <div class="col-md-1"></div>#}
+            </div>
+        </div>
+
+
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+
+        $(document).ready(function () {
+
+            $("#id_step_1-p_counseling_Individual").click(function () {
+                if (document.getElementById('id_step_1-p_counseling_Individual').checked) {
+                    $(".chb").prop('checked', false);
+                    $(this).prop('checked', true);
+                    $("#formStep1").submit();
+                }
+            });
+            $("#id_step_1-p_counseling_couples_therapy").click(function () {
+                if (document.getElementById('id_step_1-p_counseling_couples_therapy').checked) {
+                    $(".chb").prop('checked', false);
+                    $(this).prop('checked', true);
+                    $("#formStep1").submit();
+                }
+            });
+            $("#id_step_1-p_counseling_child_and_teen").click(function () {
+                if (document.getElementById('id_step_1-p_counseling_child_and_teen').checked) {
+                    $(".chb").prop('checked', false);
+                    $(this).prop('checked', true);
+                    $("#formStep1").submit();
+                }
+            });
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends 'psychotherapy/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+    باتشکر از شما
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card card-default shadow" style="text-align: center;border-radius: 16px;border: none;">
+                <div class="card-body" style="text-align: right;">
+                    <div class="alert alert-info alert-dismissible text-center">
+                        اطلاعات شما با موفقیت دریافت گردید
+                    </div>
+{#                    <a href="{% url 'wizard:wizard_step_one_url' %}" type="button" class="btn btn-block btn-default btn-sm">بازگشت به صفحه اصلی</a>#}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+
+{% endblock %}

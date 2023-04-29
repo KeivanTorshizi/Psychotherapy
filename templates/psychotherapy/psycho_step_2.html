@@ -1,0 +1,115 @@
+{% extends 'psychotherapy/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+
+
+
+    <form action="" id="formStep2" method="post" name="myForm" novalidate>
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-default shadow" style="text-align: center;border-radius: 16px;border: none;">
+                        <div class="card-body" style="text-align: right;">
+                            <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-warning alert-dismissible" style="font-size: 13px;">
+                                        <h6><i class="icon fas fa-exclamation-triangle"></i> هشدار ! </h6>
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {{ wizard.management_form }}
+                            {% if wizard.form.forms %}
+                                {{ wizard.form.management_form }}
+                                {% for form in wizard.form.forms %}
+                                    {{ form }}
+                                {% endfor %}
+                            {% else %}
+                                <div class="row" style="text-align: center">
+                                    <div class="form-group col-md-12 col-sm-12" style="text-align: center">
+                                        Choose your gender
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="form-group col-md-4 col-sm-12" style="text-align: center">
+                                        {{ wizard.form.Male|as_crispy_field }}
+                                    </div>
+
+                                    <div class="form-group col-md-4 col-sm-12" style="text-align: center">
+                                        {{ wizard.form.Female|as_crispy_field }}
+                                    </div>
+
+                                    <div class="form-group col-md-4 col-sm-12" style="text-align: center">
+                                        {{ wizard.form.Other|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12 container justify-content-center" style="padding: 40px">
+            <div class="col">
+                <button class="btn btn-sm btn-secondary prev_btn" name="wizard_goto_step"
+                        style="font-size: 13px;
+                                 background-color: rgb(227,227,227);
+                                 color: rgb(0,73,66);
+                                 border-width: 10px;
+                                 border-color: rgb(234,234,234);
+                                 border-style: solid;
+                                 border-radius: 10px;"
+                        type="submit"
+                        value="{{ wizard.steps.prev }}">قبلی
+                </button>
+                <input class="btn btn-sm btn-danger next_btn"
+                       style="background-color: rgb(247, 67, 67);
+                                  font-size: 13px;
+                                  color:  white;
+                                  border-width: 10px;
+                                  border-color: rgb(247, 82, 82);
+                                  border-style: solid;
+                                  border-radius: 10px;"
+                       type="submit" value="بعدی"/>
+            </div>
+        </div>
+
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $(document).ready(function () {
+            debugger;
+            $("#id_step_2-Male").click(function () {
+                if (document.getElementById('id_step_2-Male').checked) {
+                    $("#formStep2").submit();
+                }
+            });
+            $("#id_step_2-Female").click(function () {
+                if (document.getElementById('id_step_2-Female').checked) {
+                    $("#formStep2").submit();
+                }
+            });
+            $("#id_step_2-Other").click(function () {
+                if (document.getElementById('id_step_2-Other').checked) {
+                    $("#formStep2").submit();
+                }
+            });
+        });
+    </script>
+{% endblock %}
+

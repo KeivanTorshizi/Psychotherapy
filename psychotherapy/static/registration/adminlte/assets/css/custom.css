@@ -1,0 +1,112 @@
+@import url('https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel.css');
+
+body {
+    font-family: Vazir !important;
+}
+
+*{
+    direction: rtl !important;
+}
+.layout-fixed .main-sidebar {
+    right: 0;
+}
+.brand-image {
+    float: right;
+}
+.content-wrapper, .main-footer, .main-header {
+    margin-left: 0px;
+    margin-right: 250px;
+}
+.mr-auto-navbav{
+    margin-right: auto!important;
+}
+.navbar-expand .navbar-nav .nav-link {
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+[class*=icheck-]>input:first-child:checked+input[type=hidden]+label::after, 
+[class*=icheck-]>input:first-child:checked+label::after {
+    right: 15px;
+    left: auto;
+}
+.nav-sidebar .nav-link>.right, 
+.nav-sidebar .nav-link>p>.right {
+    left: 1rem;
+    right: auto;
+}
+.nav-sidebar .nav-link>.right:nth-child(2), 
+.nav-sidebar .nav-link>p>.right:nth-child(2) {
+    left: 2.2rem;
+    right: auto;
+}
+.small-box .icon>i {
+    left: 15px;
+    right: auto;
+}
+@media (min-width: 992px){
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem!important;
+    }
+    .sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .main-footer, .sidebar-mini.sidebar-collapse .main-header {
+        margin-right: 4.6rem!important;
+        margin-left: 0!important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .main-sidebar, .main-sidebar::before {
+        box-shadow: none !important;
+        margin-right: -250px;
+    }
+
+    .content-wrapper, .content-wrapper::before, .main-footer, .main-footer::before, .main-header, .main-header::before {
+        margin-right: 0;
+    }
+
+    .sidebar-open .main-sidebar, .sidebar-open .main-sidebar::before {
+        margin-right: 0;
+    }
+}
+
+
+.next_btn {
+    width: 49%;
+    border-radius: 7px;
+    display: inline-block;
+    background-color: #ef3d35;
+    border: none;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    box-shadow: 0 14px 26px -12px rgb(239 61 53), 0 4px 23px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(239 61 53 / 23%);
+}
+
+
+.prev_btn {
+    width: 49%;
+    border-radius: 7px;
+    display: inline-block;
+    background-color: #a9a9a9;
+    border: none;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    box-shadow: 0 14px 26px -12px rgb(169 169 169), 0 4px 23px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(101 101 101 / 23%);
+}
+
+
+.btn-radius {
+    border-radius: 20px;
+}
+
+a.nav-link {
+    font-size: 14px;
+}
+
+.btn-sm {
+    font-size: 12px;
+}
+
+a.nav-link {
+    padding: 6px 11px 6px 11px !important;
+    font-size: 13px !important;
+}

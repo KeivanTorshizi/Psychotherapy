@@ -1,0 +1,148 @@
+{% extends 'psychotherapy/base.html' %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+
+
+
+    <form action="" id="formStep2" method="post" name="myForm" novalidate>
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-default shadow" style="text-align: center;border-radius: 16px;border: none;">
+                        <div class="card-body" style="text-align: right;">
+
+                            <div data-v-3c50d80d="" class="indicator">
+                                <div data-v-154ea6ea="" data-v-3c50d80d="">
+                                    <div data-v-154ea6ea="" class="indicatorInner">
+                                        <div data-v-154ea6ea="" class="activeArea" style="width: 33.3%;"></div>
+                                    </div>
+                                    <div data-v-154ea6ea="" class="indicatorLabels d-flex justify-space-between">
+                                        <div class="col-md-4 col-sm-4 activeLabel" style="text-align: left">Profile
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">Select therapist</div>
+                                        <div class="col-md-4 col-sm-4 ">Register</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="{% if form.non_field_errors %}invalid{% endif %} mb-2">
+                                {% for error in form.non_field_errors %}
+                                    <div class="alert alert-warning alert-dismissible" style="font-size: 13px;">
+                                        <h6><i class="icon fas fa-exclamation-triangle"></i> هشدار ! </h6>
+                                        {{ error }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            {{ wizard.management_form }}
+                            {% if wizard.form.forms %}
+                                {{ wizard.form.management_form }}
+                                {% for form in wizard.form.forms %}
+                                    {{ form }}
+                                {% endfor %}
+                            {% else %}
+                                <div class="row" style="text-align: center;padding-top: 40px">
+                                    <div class="form-group col-md-12 col-sm-12"
+                                         style="text-align: center;font-weight:bold">
+                                        Choose your gender
+                                    </div>
+                                </div>
+                                <div class="row" style="padding-top:15px;">
+                                    <div class="col-lg-3 col-md-3 col-sm-12 ">
+                                    </div>
+                                    <div class="form-group col-md-2 col-sm-2">
+                                        <div class="selected-box" style="text-align: center">
+                                            {{ wizard.form.p_gender_male|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2 col-sm-2">
+                                        <div class="selected-box" style="text-align: center">
+                                            {{ wizard.form.p_gender_female|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2 col-sm-2">
+                                        <div class="selected-box" style="text-align: center">
+                                            {{ wizard.form.p_gender_other|as_crispy_field }}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-12 ">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-12 container justify-content-center"
+                                     style="padding: 30px">
+                                    <div class="col">
+                                        <button class="btn btn-sm btn-secondary prev_btn" name="wizard_goto_step"
+                                                style="font-size: 13px;
+                                 background-color: rgb(227,227,227);
+                                 color: rgb(0,73,66);
+                                 border-width: 10px;
+                                 border-color: rgb(234,234,234);
+                                 border-style: solid;
+                                 border-radius: 10px;"
+                                                type="submit"
+                                                value="{{ wizard.steps.prev }}">Previous
+                                        </button>
+
+                                        <input class="btn btn-sm btn-danger next_btn"
+                                               style="background-color: rgb(247, 67, 67);
+                                                      font-size: 13px;
+                                                      color:  white;
+                                                      border-width: 10px;
+                                                      border-color: rgb(247, 82, 82);
+                                                      border-style: solid;
+                                                      border-radius: 10px;"
+                                               type="submit" value="Next"/> <i class="fa fa-backward"></i>
+
+                                    </div>
+                                </div>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        $(document).ready(function () {
+            debugger;
+            $("#id_step_2-p_gender_male").click(function () {
+                if (document.getElementById('id_step_2-p_gender_male').checked) {
+                    $(".chb").prop('checked', false);
+                    $(this).prop('checked', true);
+                    $("#formStep2").submit();
+                }
+            });
+            $("#id_step_2-p_gender_female").click(function () {
+                if (document.getElementById('id_step_2-p_gender_female').checked) {
+                    $(".chb").prop('checked', false);
+                    $(this).prop('checked', true);
+                    $("#formStep2").submit();
+                }
+            });
+            $("#id_step_2-p_gender_other").click(function () {
+                if (document.getElementById('id_step_2-p_gender_other').checked) {
+                    $(".chb").prop('checked', false);
+                    $(this).prop('checked', true);
+                    $("#formStep2").submit();
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
